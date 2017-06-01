@@ -1,0 +1,17 @@
+[
+  {
+    "name": "О нас",
+    "level": 1,
+    "url": "?module=index"
+  },
+  {
+    "name": "Каталог товаров",
+    "level": 1,
+    "url": "?module=index"
+  },
+  {
+    "name": "Контакты",
+    "level": 1,
+    "url": "?module=index"
+  }
+]

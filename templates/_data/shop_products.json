@@ -1,0 +1,79 @@
+[
+	{
+
+		"id" : "1",
+
+		"name" : "Acer Aspire AS5755G-2634G50Mnks",
+
+		"price" : "1223",
+
+		"price2" : "0",
+
+		"img" : "2.jpg",
+		"images":[
+			{
+				"name":"картинка 1",
+				"file":"31.jpg"
+			},
+			{
+				"name":"картинка 2",
+				"file":"11.jpg"
+			}
+		],
+
+		"text" : ""
+	},
+	{
+
+		"id" : "6",
+
+		"name" : "Asus K53BR",
+
+		"price" : "538",
+
+		"price2" : "1223",
+
+		"img" : "31.jpg",
+
+		"text" : ""
+	},
+	{
+
+		"id" : "7",
+
+		"name" : "Acer Aspire 5250-E302G32Mikk",
+
+		"price" : "404",
+		"price2" : "0",
+
+		"img" : "2.jpg",
+
+		"text" : ""
+	},
+	{
+
+		"id" : "8",
+
+		"name" : "Asus N53SV",
+
+		"price" : "905",
+		"price2" : "0",
+
+		"img" : "11.jpg",
+
+		"text" : ""
+	},
+	{
+
+		"id" : "9",
+
+		"name" : "товар",
+
+		"price" : "0",
+		"price2" : "0",
+
+		"img" : "11.jpg",
+
+		"text" : ""
+	}
+]

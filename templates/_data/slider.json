@@ -1,0 +1,26 @@
+[
+	{
+
+		"id" : "1",
+
+		"name" : "Пустыня",
+
+		"img" : "desert.jpg"
+	},
+	{
+
+		"id" : "2",
+
+		"name" : "Пингвины",
+
+		"img" : "penguins.jpg"
+	},
+	{
+
+		"id" : "3",
+
+		"name" : "Коала",
+
+		"img" : "koala.jpg"
+	}
+]
