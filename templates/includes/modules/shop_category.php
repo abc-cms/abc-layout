@@ -1,5 +1,5 @@
 <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
-	<?=html_query('menu/category',$html['shop_categories'])?>
+	<?=html_query('menu/category',$page['shop_categories'])?>
 	<?=$html['filter']?>
 </div>
 

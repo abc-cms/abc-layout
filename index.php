@@ -1,9 +1,11 @@
 <?php
 /**
  * Список страниц для верстки
+ * документация
+ * https://docs.google.com/document/d/1SccM1zcgpJSSlZSMSUDK4LbnjG_oJkxC2qc1d4YMTAE/edit
  */
 
-$config['layout_version'] = '1.0.0 - 1.2.13';
+$config['layout_version'] = '1.0.1 - 1.2.22';
 
 //папка со стилями
 $config['style'] = 'templates';
@@ -15,10 +17,22 @@ $modules = array(
 	'shop_product'=>'Страница товара',
 );
 
-//файлы с массивами данных
-$json = array(
-	'menu','shop_products','shop_categories','slider'
-);
+//файл с архивом верстки
+$archive = 'layout.zip';
+
+//если файлов с данными в папке /templates/_data/ много
+$json = false;
+//если файл только один то указываем название файла /templates/_data/data.json
+//$json = 'data';
+
+//переменная с массивами данных из папки /templates/_data/ а так же метаданными старницы
+$page = array();
+
+//переменная со словами словаря /templates/_data/dictionary.json
+$lang = array();
+
+//переменная с кусками нтмл кода
+$html = array();
 
 //массив всех подключаемых css и js файлов
 //{localization} - будет заменяться на $lang['localization']
@@ -98,17 +112,21 @@ require_once(ROOT_DIR.'functions/common_func.php');
 require_once(ROOT_DIR.'functions/auth_func.php');
 
 //если все в одном файле то делаем один многоуровневый массив
-if (count($json)==1) {
-	$path = ROOT_DIR . $config['style'] . '/_data/'.$json[0].'.json';
+if ($json) {
+	$path = ROOT_DIR . $config['style'] . '/_data/'.$json.'.json';
 	$data = file_get_contents($path);
-	$html = json_decode($data, true);
-	$lang = $html['lang'];
+	$page = json_decode($data, true);
+	$lang = $page['lang'];
 }
 else {
-	foreach ($json as $k=>$v) {
-		$path = ROOT_DIR . $config['style'] . '/_data/'.$v.'.json';
+	$root = ROOT_DIR . $config['style'] . '/_data/';
+	$files = scandir($root,1);
+	foreach ($files as $file) {
+		if (substr($file, -4)!='json' OR $file=='..' OR $file=='.') continue;
+		$path = ROOT_DIR . $config['style'] . '/_data/'.$file;
 		$data = file_get_contents($path);
-		$html[$v] = json_decode($data, true);
+		$key = substr($file, 0, -5);
+		$page[$key] = json_decode($data, true);
 	}
 	//подключаем словарь
 	$dictionary = file_get_contents(ROOT_DIR.$config['style'].'/_data/dictionary.json');
@@ -126,6 +144,7 @@ if (array_key_exists($html['module'] ,$modules)) {
 	//основной шаблон
 	$template = ROOT_DIR.$config['style'].'/includes/common/template.php';
 	if (file_exists($path)) {
+		$page['name'] = $modules[$html['module']];
 		require_once($path);
 		require_once($template);
 	}
@@ -134,9 +153,14 @@ if (array_key_exists($html['module'] ,$modules)) {
 	}
 }
 else {
-	echo '<ol style="padding:100px;">';
+	echo '<ol style="padding:100px 100px 0;">';
 	foreach ($modules as $k=>$v) {
-		echo '<li><a href="?module='.$k.'">'.$v.'</a></li>';
+		echo '<li style="padding:10px"><a href="?module='.$k.'">'.$v.'</a></li>';
 	}
 	echo '</ol>';
+	if (file_exists($archive)) {
+		echo '<div style="padding:10px 110px">';
+		echo '<a href="'.$archive.'"><b>СКАЧАТЬ АРХИВ</b></a>';
+		echo '</div>';
+	}
 }

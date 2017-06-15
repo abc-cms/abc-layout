@@ -37,7 +37,7 @@ if(strripos($_SERVER['HTTP_HOST'], '.abc-cms.com') OR strripos($_SERVER['HTTP_HO
 
 	<div id="wrapper">
 		<div class="container">
-			<?=html_query('menu/list',$html['menu'])?>
+			<?=html_query('menu/list',$page['menu'])?>
 
 			<div class="row pt">
 
@@ -58,7 +58,7 @@ if(strripos($_SERVER['HTTP_HOST'], '.abc-cms.com') OR strripos($_SERVER['HTTP_HO
 		<div class="row">
 			<div class="col-md-3 col-sm-4 col-xs-12 pb">
 				<?=i18n('common|info',true)?>
-				<?=html_query('menu/list2',$html['shop_categories'])?>
+				<?=html_query('menu/list2',$page['shop_categories'])?>
 			</div>
 			<div class="col-md-3 col-sm-4 col-xs-12 pb">
 				<h4><?=i18n('profile|link',true)?></h4>
