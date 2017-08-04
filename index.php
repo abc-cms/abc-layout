@@ -5,16 +5,16 @@
  * https://docs.google.com/document/d/1SccM1zcgpJSSlZSMSUDK4LbnjG_oJkxC2qc1d4YMTAE/edit
  */
 
-$config['layout_version'] = '1.0.1 - 1.2.22';
+$config['layout_version'] = '1.0.2';
 
 //папка со стилями
 $config['style'] = 'templates';
 
 //список модулей
 $modules = array(
-	'index'=>'Главная',
-	'shop_category'=>'Список товаров',
-	'shop_product'=>'Страница товара',
+	'index'=>'01. Главная',
+	'shop_category'=>'02. Список товаров',
+	'shop_product'=>'03. Страница товара',
 );
 
 //файл с архивом верстки
@@ -102,7 +102,7 @@ $config['cache'] = 0;
 error_reporting(E_ALL);
 
 header('Content-type: text/html; charset='.$config['charset']);
-header('X-UA-Compatible: IE=edge,chrome=1');
+header('X-UA-Compatible: IE=edge');
 
 define('ROOT_DIR', dirname(__FILE__).'/');
 
@@ -153,11 +153,11 @@ if (array_key_exists($html['module'] ,$modules)) {
 	}
 }
 else {
-	echo '<ol style="padding:100px 100px 0;">';
+	echo '<ul style="padding:100px 100px 0; list-style: none">';
 	foreach ($modules as $k=>$v) {
 		echo '<li style="padding:10px"><a href="?module='.$k.'">'.$v.'</a></li>';
 	}
-	echo '</ol>';
+	echo '</ul>';
 	if (file_exists($archive)) {
 		echo '<div style="padding:10px 110px">';
 		echo '<a href="'.$archive.'"><b>СКАЧАТЬ АРХИВ</b></a>';
